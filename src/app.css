@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/poppins-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lato";
+  src: url("/fonts/Lato.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Karla";
+  src: url("/fonts/karla.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope.woff2") format("woff2");
+}
+
+svg {
+  @apply ring-0;
+}
+body {
+  @apply overscroll-y-contain;
+  min-height: 100vh;
+  /* mobile viewport bug fix */
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+.btn {
+  @apply text-text3 bg-primary hover:bg-highlight cursor-pointer focus:ring-4 focus:ring-accent1 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none;
+}
+.input {
+  @apply bg-bg2 border border-bg2 focus:ring-2 text-text3 text-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5 disabled:bg-bg2 disabled:cursor-not-allowed;
+}
+
+.scrollbar::-webkit-scrollbar {
+  @apply w-1 overflow-hidden;
+}
+.scrollbar::-webkit-scrollbar-track {
+  @apply bg-bg2 mr-1;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded;
+}
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-accent1;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+.link {
+  @apply focus-visible:outline-none text-accent1 hover:underline cursor-pointer focus-visible:ring-2 focus-visible:ring-accent1 outline-none rounded focus-visible:underline;
+}
+
+@keyframes stripe {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+.animate-stripe {
+  background-size: 50% 100%;
+  animation: stripe 2s linear infinite;
+}
+.two-line-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 3em;
+}
+
+.toast[data-swipe="end"] {
+  animation: swipeOut 100ms ease-out;
+}
+
+@keyframes swipeOut {
+  from {
+    transform: translateX(var(--kb-toast-swipe-end-x));
+  }
+  to {
+    transform: translateX(calc(100% + var(--viewport-padding)));
+  }
+}
+
